@@ -11,8 +11,6 @@ You,
 
 
 
-Made by Gloxide,
-    Shown off by wijj
-    
+Made by Gloxide
 
 *This is the demo version, witch is different from the full story*
