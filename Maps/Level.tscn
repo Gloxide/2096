@@ -1,0 +1,222 @@
+[gd_scene load_steps=23 format=3 uid="uid://bgus0s2ejbj8d"]
+
+[ext_resource type="Script" path="res://Maps/Testing-MAP/Level.gd" id="1_pmkr5"]
+[ext_resource type="PackedScene" uid="uid://cw2l6rgfl0c3n" path="res://Player/Player.tscn" id="2_80c2e"]
+[ext_resource type="FontFile" uid="uid://q1tonn8puicf" path="res://Fonts/Pengenalan.ttf" id="3_73dk3"]
+[ext_resource type="PackedScene" uid="uid://c427cu5oxdyvx" path="res://Maps/Testing-MAP/TestMovingPlatform.tscn" id="4_nmeuy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0dvdt"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7mvbk"]
+sky_material = SubResource("ProceduralSkyMaterial_0dvdt")
+
+[sub_resource type="Environment" id="Environment_u3l81"]
+background_mode = 2
+sky = SubResource("Sky_7mvbk")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sadue"]
+frequency = 0.724
+fractal_type = 3
+fractal_octaves = 3
+fractal_lacunarity = 2.036
+fractal_gain = 1.432
+fractal_ping_pong_strength = 2.63
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7yn2l"]
+width = 16
+height = 16
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_sadue")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrqyn"]
+diffuse_mode = 1
+albedo_color = Color(0.25098, 0.329412, 0.121569, 1)
+albedo_texture = SubResource("NoiseTexture2D_7yn2l")
+metallic_specular = 0.0
+anisotropy_enabled = true
+anisotropy = 1.0
+subsurf_scatter_strength = 0.89
+refraction_scale = 0.71
+uv1_scale = Vector3(240, 240, 240)
+uv1_triplanar_sharpness = 0.0457526
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="1"]
+material = SubResource("StandardMaterial3D_jrqyn")
+size = Vector2(250, 250)
+
+[sub_resource type="BoxShape3D" id="7"]
+size = Vector3(250, 0.2, 250)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_md1b8"]
+noise_type = 3
+frequency = 0.438
+fractal_octaves = 1
+fractal_lacunarity = 2.698
+fractal_gain = 0.923
+fractal_weighted_strength = 0.96
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fmnap"]
+width = 16
+height = 16
+noise = SubResource("FastNoiseLite_md1b8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ie6m8"]
+albedo_color = Color(0.576471, 0, 0.176471, 1)
+albedo_texture = SubResource("NoiseTexture2D_fmnap")
+uv1_scale = Vector3(12, 12, 12)
+texture_filter = 0
+
+[sub_resource type="PrismMesh" id="9"]
+material = SubResource("StandardMaterial3D_ie6m8")
+left_to_right = 0.0
+size = Vector3(7, 3, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="10"]
+points = PackedVector3Array(-3.5, 1.5, 5, -3.5, 1.5, -5, -3.5, 1.5, 5, -3.5, 1.5, -5, -3.5, -1.5, 5, 3.5, -1.5, -5, 3.5, -1.5, 5, -3.5, -1.5, -5, -3.5, 1.5, 5, -3.5, 1.5, -5, -3.5, 1.5, -5, -3.5, 1.5, 5, 3.5, -1.5, 5, -3.5, -1.5, -5, 3.5, -1.5, -5, -3.5, -1.5, 5, -3.5, -1.5, 5, 3.5, -1.5, 5, -3.5, -1.5, -5, 3.5, -1.5, -5)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ry6ti"]
+frequency = 0.813
+fractal_type = 2
+fractal_octaves = 1
+fractal_lacunarity = 1.996
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cnin3"]
+width = 16
+height = 16
+noise = SubResource("FastNoiseLite_ry6ti")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8wpm"]
+albedo_color = Color(0, 0.117647, 0.321569, 1)
+albedo_texture = SubResource("NoiseTexture2D_cnin3")
+uv1_scale = Vector3(8, 1, 3)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_lygjo"]
+material = SubResource("StandardMaterial3D_w8wpm")
+size = Vector3(0.1, 5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qyc5y"]
+size = Vector3(0.1, 5, 50)
+
+[node name="Level" type="Node"]
+script = ExtResource("1_pmkr5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u3l81")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("7")
+
+[node name="Player" parent="." instance=ExtResource("2_80c2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68779, 0.0708658, 6.90174)
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 484.0
+offset_bottom = 310.0
+
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.0980392)
+
+[node name="Label" type="Label" parent="HUD"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+theme_override_fonts/font = ExtResource("3_73dk3")
+text = "Test"
+
+[node name="Label2" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -67.0
+offset_right = 59.0
+offset_bottom = -41.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_73dk3")
+text = "Sensitivity  = 0.005"
+
+[node name="Label3" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -91.0
+offset_right = 60.0
+offset_bottom = -68.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_73dk3")
+text = "Use z to increase sensitivity 
+Use x to lower sensitivity
+Use F1 to restart"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.616195, -0.274607, 0.738169, 0.78751, -0.201155, 0.582551, -0.011486, 0.94028, 0.340207, -1.55935, 6.58767, 3.86212)
+light_color = Color(1, 0.992157, 0.858824, 1)
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 2.414
+shadow_transmittance_bias = 9.383
+shadow_opacity = 0.66
+shadow_blur = 2.528
+
+[node name="StaticBody2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.038, 1.3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody2"]
+mesh = SubResource("9")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody2"]
+shape = SubResource("10")
+
+[node name="StaticBody3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.41128, 0, 0, 0, 1, 0, 0, 0, 1, 25.4226, 1.3, 10.432)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3"]
+mesh = SubResource("9")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3"]
+shape = SubResource("10")
+
+[node name="TestMovingPlatform" parent="." instance=ExtResource("4_nmeuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6973, 1.5236, -1.157)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.993, 2.30292, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("BoxMesh_lygjo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_qyc5y")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0412304, 0, 0.99915, 0, 1, 0, -0.99915, 0, 0.0412304, 55.3161, 2.30292, 102.374)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
+mesh = SubResource("BoxMesh_lygjo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+shape = SubResource("BoxShape3D_qyc5y")

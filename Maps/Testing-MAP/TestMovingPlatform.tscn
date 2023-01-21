@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://c427cu5oxdyvx"]
+
+[ext_resource type="Script" path="res://Maps/Testing-MAP/TestMovingPlatform.gd" id="1_4mxvh"]
+
+[sub_resource type="Curve3D" id="1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sxglm"]
+frequency = 0.402
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6vgrc"]
+width = 16
+height = 16
+noise = SubResource("FastNoiseLite_sxglm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nuele"]
+albedo_color = Color(0.0627451, 0.588235, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_6vgrc")
+uv1_scale = Vector3(1.409, 0.724, 5.416)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="2"]
+material = SubResource("StandardMaterial3D_nuele")
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(5, 1, 5)
+
+[node name="TestMovingPlatform" type="Node3D"]
+script = ExtResource("1_4mxvh")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("1")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+rotation_mode = 0
+loop = false
+
+[node name="StaticBody3D" type="CharacterBody3D" parent="Path3D/PathFollow3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D/StaticBody3D"]
+mesh = SubResource("2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/StaticBody3D"]
+shape = SubResource("3")
