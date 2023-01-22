@@ -1,14 +1,21 @@
 # 2096, The Opening
 
-The world, the place humans used to call home.
-Earth has turned into a warzone, anywere you travel.
-Humans forced to hide, without anywhere to go or trust.
-"AI was going to be great." they said, but now it has controll over our entire world.
-And its not getting any better with the new life form that has joined the AI.
+The Earth, a place once called home by the human race is now what seems to be their grave.
+War has torn the Earth apart, with little to no salvation or escape anywhere.
+Mankind and it's allies were forced to hide in cramped dark vaults, as any unfortunate souls left on the surface slowly dwindled.
+Humanity tried to play god, making artificial intelligence a reality to great success.
+How hopeful they were, dreaming of all the great feats A.I. could accomplish.
+Little did they know among those great feats would be eventually be toppling the human race.
+The A.I. wasn't malicious. They were no hivemind. This wasn't unwarranted. They were no less human than humanity itself.
+Many of them showed diplomacy, making amends to be on good terms with an alien race who had happened in during the war.
+The A.I. and the alien race had formed a close alliance, being intertwined and integrated into eachother as one entity.
+However, small groups of this alien race and the A.I. sympathized with the humans, forming a resistance with humanity.
+With this, hope still gleamed. Perhaps they would survive.
 
-You,
-  A military robot from 2044, made to kill, must walk what not many call earth.
 
+You take the role of a war robot from long ago, when steel and flesh were friend and not foe.
+Having only just woke up in this situation after decades of being broken, you have no idea what is going on.
+Your only goal now is to survive and find out what the fuck is happening.
 
 
 Made by Gloxide
