@@ -23,3 +23,5 @@ Made by Gloxide
 made in godot 4
 
 *This is the demo version, witch is different from the full story*
+
+The current release is the development of the demo release
