@@ -25,3 +25,7 @@ made in godot 4
 *This is the demo version, witch is different from the full story*
 
 The current release is the development of the demo release
+
+i am currently working on this projet when i have time and currently i am focusing on school, there will be occasional updates soon.
+before i get the updates out i need to re write the code so it is more understandable and easy to work with, if i didnt my life would be very annoying to have to remember every little thing.
+so for now it is postponed so that i can focus on school but also re-write the project. this re-write will also make it easier to have many more modes.
