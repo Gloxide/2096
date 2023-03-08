@@ -10,7 +10,7 @@ Made by Gloxide
 
 Made in Godot 4
 
-This is the demo version, which differs from the full story.
+This is the demo version, which is mainly the beta and alpha versions of the game.
 
 The current release is the development version of the demo release, but be warned, it's a hyper-realistic, intense and in-depth experience that will make you question what is really happening.
 
